@@ -30,10 +30,10 @@ This is a hobby project and the focus is on the process not the result. I want t
     Hello()
 
 ### Hot code update example
-    fun Foo() do
+    fun Foo() do
       Bar()
     endfun
-
+    
     fun Bar() do
       Foo()
     endfun
