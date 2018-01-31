@@ -29,8 +29,8 @@ This is a hobby project and the focus is on the process not the result. I want t
 
     Hello()
 
-### Minimal example of hot code update
-    fun Foo() do
+### Hot code update example
+    fun Foo() do
       Bar()
     endfun
 
