@@ -10,6 +10,23 @@ This is a hobby project and the focus is on the process not the result. I want t
 * Streaming source code - running on a virtual machine
 * Hot code update - through streaming
 
+## List of ideas for the virtual machine
+
+### VM state
+* Registers (Vector)
+* Functions (HashMap)
+* Next (Queue)
+* Wait (HashMap)
+
+### VM interfaces
+* Console (read/write)
+* Program (read/write)
+* Registers (readonly)
+* Functions (readonly)
+* Next (readonly)
+* Wait (readonly)
+* Status (readonly)
+
 ## Built in functions
     Input(Callback)
     Output(String)
