@@ -6,7 +6,7 @@ This is a hobby project and the focus is on the process not the result. I want t
 
 * Forward calls only - no return stack
 * Dispatch queue for forward calls - to simulate threads
-* Waiting queue - merge simulated threads if needed
+* Waiting queue - merge simulated threads
 * Streaming source code - running on a virtual machine
 * Hot code update - through streaming
 
@@ -22,6 +22,7 @@ This is a hobby project and the focus is on the process not the result. I want t
 * Console (read/write)
 * Program (read/write)
 * Registers (readonly)
+* Instructions (readonly)
 * Functions (readonly)
 * Next (readonly)
 * Wait (readonly)
