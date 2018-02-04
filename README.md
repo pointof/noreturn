@@ -29,10 +29,11 @@ This is a hobby project and the focus is on the process not the result. I want t
 * Status (readonly)
 
 ## Built in functions
-    Input(Callback)
-    Output(String)
-    OutputLine(String)
-    Wait(Key, Lifetime, Name, Params)
+
+    Input(Function)
+    Output(String)
+    OutputLine(String)
+    Wait(Key, Lifetime, Name, Params)
 
     CallExt(Node, Name, Params)
     SendExt(Node, Name, Function)
@@ -41,39 +42,40 @@ This is a hobby project and the focus is on the process not the result. I want t
 ## Syntax examples
 
 ### Hello world example
-    fun Hello() do
-      OutputLine("Hello World!")
-    endfun
+
+    fun Hello when
+      () do OutputLine("Hello World!")
+    endfun
 
     Hello()
 
 ### Hot code update example
-    fun Foo() do
-      Bar()
+    fun Foo when
+      () do Bar()
     endfun
     
-    fun Bar() do
-      Foo()
+    fun Bar when 
+      () do Foo()
     endfun
 
     Foo()
 
-    fun Bar() do
-    endfun 
+    fun Bar when
+      () do nothing
+    endfun
 
 ### Fibonacci example
-    fun Fib match
-      (0) do
-        Fib(0, 0, 1)
-      (X) when is_int(X), X > 0 do
-        Fib(X, X, 0)
-      (X0, X, Acc) do
-        case
-          when X > 0 do
+    fun Fib when
+      (0) do Fib(0, 0, 1);
+      (X), is_int(X), X > 0 do
+        Fib(X, X, 0);
+      (X0, X, Acc) do
+        case
+          X > 0 do
             Xn = X - 1,
-            Fib(X0, Xn, Acc+X)
-          else do
-            OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc))
+            Fib(X0, Xn, Acc+X);
+          else do
+            OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc))
         endcase
     endfun
 
@@ -86,18 +88,19 @@ This is a hobby project and the focus is on the process not the result. I want t
     Input(Output)
     
 ### Typewriter example
-    fun Init() do
-      Input(Keystroke),
-      Keystroke("", "")
+    fun Init when
+      () do
+        Input(Keystroke),
+        Keystroke("", "")
     endfun
 
-    fun Keystroke match
-      (I) do
-        Wait(key, 1, Keystroke, (nil, I))
-      (S, I) when I == "\r" do
+    fun Keystroke when
+      (I) do
+        Wait(key, 1, Keystroke, (nil, I));
+      (S, I), I == "\r" do
         OutputLine(S),
-        Wait(key, 1, Keystroke, ("", nil))
-      (S, I) do
+        Wait(key, 1, Keystroke, ("", nil));
+      (S, I) do
         Wait(key, 1, Keystroke, (S+I, nil))
     endfun
 
