@@ -29,79 +29,83 @@ This is a hobby project and the focus is on the process not the result. I want t
 * Status (readonly)
 
 ## Built in functions
+```
+Input(Function)
+Output(String)
+OutputLine(String)
+Wait(Key, Lifetime, Name, Params)
 
-    Input(Function)
-    Output(String)
-    OutputLine(String)
-    Wait(Key, Lifetime, Name, Params)
-
-    CallExt(Node, Name, Params)
-    SendExt(Node, Name, Function)
-    WaitExt(Node, Key, Lifetime, Name, Params)
-
+CallExt(Node, Name, Params)
+SendExt(Node, Name, Function)
+WaitExt(Node, Key, Lifetime, Name, Params)
+```
 ## Syntax examples
 
 ### Hello world example
+```
+fun Hello when
+  () do OutputLine("Hello World!")
+endfun
 
-    fun Hello when
-      () do OutputLine("Hello World!")
-    endfun
-
-    Hello()
-
+Hello()
+```
 ### Hot code update example
-    fun Foo when
-      () do Bar()
-    endfun
+```
+fun Foo when
+  () do Bar()
+endfun
     
-    fun Bar when 
-      () do Foo()
-    endfun
+fun Bar when 
+  () do Foo()
+endfun
 
-    Foo()
+Foo()
 
-    fun Bar when
-      () do nothing
-    endfun
-
+fun Bar when
+  () do nothing
+endfun
+```
 ### Fibonacci example
-    fun Fib when
-      (0) do Fib(0, 0, 1);
-      (X), is_int(X), X > 0 do
-        Fib(X, X, 0);
-      (X0, X, Acc) do
-        case
-          X > 0 do
-            Xn = X - 1,
-            Fib(X0, Xn, Acc+X);
-          else do
-            OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc))
-        endcase
-    endfun
+```
+fun Fib when
+  (0) do Fib(0, 0, 1);
+  (X), is_int(X), X > 0 do Fib(X, X, 0);
+  (X0, X, Acc) do
+    case
+      X > 0 do
+        Xn = X - 1,
+        Fib(X0, Xn, Acc+X);
+      else do
+        OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc))
+    endcase
+endfun
 
-    Fib(0)
-    Fib(1)
-    Fib(2)
-    Fib(3)
-    
+Fib(0)
+Fib(1)
+Fib(2)
+Fib(3)
+```
 ### Echo example
-    Input(Output)
-    
+```
+Input(Output)
+``` 
 ### Typewriter example
-    fun Init when
-      () do
-        Input(Keystroke),
-        Keystroke("", "")
-    endfun
+```
+fun Init when
+  () do
+    Input(Keystroke),
+    Keystroke("", "")
+endfun
 
-    fun Keystroke when
-      (I) do
-        Wait(key, 1, Keystroke, (nil, I));
-      (S, I), I == "\r" do
-        OutputLine(S),
-        Wait(key, 1, Keystroke, ("", nil));
-      (S, I) do
-        Wait(key, 1, Keystroke, (S+I, nil))
-    endfun
+fun Keystroke when
+  (I) do
+    Wait(key, 1, Keystroke, (nil, I));
+  (S, I), I == "\r" do
+    OutputLine(S),
+    Wait(key, 1, Keystroke, ("", nil));
+  (S, I) do
+    Wait(key, 1, Keystroke, (S+I, nil))
+endfun
 
-    Init()
+Init()
+```
