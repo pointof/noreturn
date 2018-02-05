@@ -44,7 +44,8 @@ WaitExt(Node, Key, Lifetime, Name, Params)
 ### Hello world example
 ```
 fun Hello when
-  () do OutputLine("Hello World!")
+  () do
+    OutputLine("Hello World!")
 endfun
 
 Hello()
@@ -52,24 +53,29 @@ Hello()
 ### Hot code update example
 ```
 fun Foo when
-  () do Bar()
+  () do
+    Bar()
 endfun
     
 fun Bar when 
-  () do Foo()
+  () do
+    Foo()
 endfun
 
 Foo()
 
 fun Bar when
-  () do nothing
+  () do
+    nothing
 endfun
 ```
 ### Fibonacci example
 ```
 fun Fib when
-  (0) do Fib(0, 0, 1);
-  (X), is_int(X), X > 0 do Fib(X, X, 0);
+  (0) do
+    Fib(0, 0, 1);
+  (X), is_int(X), X > 0 do
+    Fib(X, X, 0);
   (X0, X, Acc) do
     case (X) when
       (X), X > 0 do
