@@ -43,38 +43,34 @@ WaitExt(Node, Key, Lifetime, Name, Params)
 
 ### Hello world example
 ```
-fun Hello when
-  () do
-    OutputLine("Hello World!")
+fun Hello() do
+  OutputLine("Hello World!")
 endfun
 
 Hello()
 ```
 ### Hot code update example
 ```
-fun Foo when
-  () do
-    Bar()
+fun Foo() do
+  Bar()
 endfun
     
-fun Bar when 
-  () do
-    Foo()
+fun Bar() do
+  Foo()
 endfun
 
 Foo()
 
-fun Bar when
-  () do
-    nothing
+fun Bar() do
+  nothing
 endfun
 ```
 ### Fibonacci example
 ```
-fun Fib when
+fun Fib
   (0) do
     Fib(0, 0, 1);
-  (X), is_int(X), X > 0 do
+  (X) when is_int(X), X > 0 do
     Fib(X, X, 0);
   (X0, 0, Acc) do
     OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc));
@@ -94,16 +90,15 @@ Input(Output)
 ``` 
 ### Typewriter example
 ```
-fun Init when
-  () do
-    Input(Keystroke),
-    Keystroke("", "")
+fun Init() do
+  Input(Keystroke),
+  Keystroke("", "")
 endfun
 
-fun Keystroke when
+fun Keystroke
   (I) do
     Wait(key, 1, Keystroke, (nil, I));
-  (S, I), I == "\r" do
+  (S, I) when I == "\r" do
     OutputLine(S),
     Wait(key, 1, Keystroke, ("", nil));
   (S, I) do
