@@ -76,14 +76,11 @@ fun Fib when
     Fib(0, 0, 1);
   (X), is_int(X), X > 0 do
     Fib(X, X, 0);
+  (X0, 0, Acc) do
+    OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc));
   (X0, X, Acc) do
-    case (X) when
-      (X), X > 0 do
-        Xn = X - 1,
-        Fib(X0, Xn, Acc+X);
-      else do
-        OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc))
-    endcase
+    Xn = X - 1,
+    Fib(X0, Xn, Acc+X)
 endfun
 
 Fib(0)
