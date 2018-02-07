@@ -14,6 +14,7 @@ This is a hobby project and the focus is on the process not the result. I want t
 
 ### VM state
 * Registers (Vector)
+* Instructions (Vector)
 * Functions (HashMap)
 * Next (Queue)
 * Wait (HashMap)
