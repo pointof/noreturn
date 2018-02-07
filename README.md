@@ -52,7 +52,7 @@ Hello()
 ### Hot code update example
 ```
 fun Foo() do
-  Bar()
+  next Bar()
 endfun
     
 fun Bar() do
@@ -69,9 +69,9 @@ endfun
 ```
 fun Fib
   (0) do
-    Fib(0, 0, 1);
+    next Fib(0, 0, 1);
   (X) when is_int(X), X > 0 do
-    Fib(X, X, 0);
+    next Fib(X, X, 0);
   (X0, 0, Acc) do
     OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc));
   (X0, X, Acc) do
@@ -92,7 +92,7 @@ Input(Output)
 ```
 fun Init() do
   Input(Keystroke),
-  Keystroke("", "")
+  next Keystroke("", "")
 endfun
 
 fun Keystroke
