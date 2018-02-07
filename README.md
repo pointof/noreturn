@@ -98,7 +98,7 @@ endfun
 fun Keystroke
   (I) do
     Wait(key, 1, Keystroke, (nil, I));
-  (S, I) when I == "\r" do
+  (S, "\r") do
     OutputLine(S),
     Wait(key, 1, Keystroke, ("", nil));
   (S, I) do
