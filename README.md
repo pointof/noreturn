@@ -31,6 +31,7 @@ This is a hobby project and the focus is on the process not the result. I want t
 
 ## Built in functions
 ```
+Delete(Function)
 Input(Function)
 Output(String)
 OutputLine(String)
@@ -63,7 +64,8 @@ endfun
 Foo()
 
 fun Bar() do
-  nothing
+  Delete(Foo),
+  Delete(Bar)
 endfun
 ```
 ### Fibonacci example
