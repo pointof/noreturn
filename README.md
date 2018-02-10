@@ -78,7 +78,7 @@ fun Fib
   (X0, 0, Acc) do
     OutputLine("Fib(" + to_str(X0) + ") is " + to_str(Acc));
   (X0, X, Acc) do
-    X - 1 -> Xn,
+    X - 1 in Xn,
     Fib(X0, Xn, Acc+X)
 endfun
 
