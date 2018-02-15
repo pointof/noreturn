@@ -20,14 +20,15 @@ This is a hobby project and the focus is on the process not the result. I want t
 * Wait (HashMap)
 
 ### VM interfaces
+
+* Programming (read/write)
 * Console (read/write)
-* Program (read/write)
 * Registers (readonly)
 * Instructions (readonly)
 * Functions (readonly)
 * Next (readonly)
 * Wait (readonly)
-* Status (readonly)
+
 
 ## Built in functions
 ```
