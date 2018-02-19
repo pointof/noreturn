@@ -32,7 +32,6 @@ This is a hobby project and the focus is on the process not the result. I want t
 
 ## Built in functions
 ```
-Delete(Function)
 Input(Function)
 Output(String)
 OutputLine(String)
@@ -54,20 +53,27 @@ Hello()
 ```
 ### Hot code update example
 ```
-fun Foo() do
-  next Bar()
-endfun
-    
-fun Bar() do
-  Foo()
-endfun
+module App{version: "1.0"} begin
+  fun Foo() do
+    next .Bar()
+  endfun
+    
+  fun Bar() do
+    .Foo()
+  endfun
+endmodule
 
-Foo()
+App.Foo()
 
-fun Bar() do
-  Delete(Foo),
-  Delete(Bar)
-endfun
+module App{version: "2.0"} begin
+  fun Foo() do
+    next .Bar()
+  endfun
+  
+  fun Bar() do
+    nothing
+  endfun
+endmodule
 ```
 ### Fibonacci example
 ```
